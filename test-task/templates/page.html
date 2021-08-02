@@ -7,23 +7,19 @@
     <title>HouseHold</title>
 
     <meta charset="utf-8">
+
+    <!-- <link rel="stylesheet" href="{% static 'css/bootstrap-4.4.1/bootstrap.min.css' %}">
+    <script src="{% static 'js/bootstrap-4.4.1/jquery-3.4.1.slim.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-4.4.1/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-4.4.1/bootstrap.min.js' %}"></script> -->
+
     <script   src="https://code.jquery.com/jquery-3.6.0.min.js"   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="   crossorigin="anonymous"></script>
     <script src="{% static 'js/table_column.js' %}"></script>
     
   </head>
   <body class="bg">
     <h1>Household</h1>
-    <div class="form-group">
-      <div class="row">
-        <div class="col">
-          <div id="" class="m-chq-input-box">
-            <label for="exampleFormControlFile1">Upload Cheque Frontside</label>
-            <input name="cheque_front_side" onchange="readURL(this);" type="file" accept="image/*" data-type='image' class="form-control-file" id="exampleFormControlFile1" required> 
-          </div>
-        </div>
-    </div>
-
-
+    
     <h4>---List of tables---</h4>
 
     <!-- <select class="custom-select" id="account_status_id" name="account_status_name" required> 
@@ -44,6 +40,11 @@
       <option selected>--- Select One ---</option>
       
     </select>
+
+    <form action="/action_page.php">
+      <input type="file" id="myFile" name="filename">
+      <input type="submit">
+    </form>
 
 
   </body>
