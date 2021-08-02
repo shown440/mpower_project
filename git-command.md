@@ -21,13 +21,20 @@
 ###################################
 ##### Merge GIT Branches
 ###################################
+
 Merge a Branch
 
 1. You'll want to make sure your working tree is clean and see what branch you're on. Run this command:
-        git status
+        
+	a. git status
+
 2. First, you must check out the branch that you want to merge another branch into (changes will be merged into this branch). If you're not already on the desired branch, run this command:
-        git checkout master
+        
+	b. git checkout master
+
         NOTE: Replace master with another branch name as needed.
 3. Now you can merge another branch into the current branch. Run this command:
-        git merge my-branch-name
+        
+	c. git merge my-branch-name
+
         NOTE: When you merge, there may be a conflict. Refer to Handling Merge Conflicts (the next exercise) to learn what to do.
