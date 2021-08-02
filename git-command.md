@@ -2,7 +2,7 @@
 2. git status
 3. git add [files name] or git add -A #means upload all
 4. git commit -m "first commit"
-5. git remote add origin https://github.com/shown440/database_independent_API.git
+5. git remote add origin  git remote add origin https://github.com/shown440/mpower_project.git
 6. git push -u origin master
 
 ###################################
