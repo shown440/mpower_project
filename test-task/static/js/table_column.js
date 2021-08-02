@@ -39,7 +39,7 @@ function show_table_column(input) {
                 let select = document.getElementById('column_id');
                 for (const property in json_data.response){
                     var opt = document.createElement('option');
-                    opt.value = property;
+                    opt.value = json_data.response[property]; //property;
                     opt.innerHTML = json_data.response[property];
                     select.appendChild(opt);
                 }

@@ -20,29 +20,26 @@
   <body class="bg">
     <h1>Household</h1>
     
-    <h4>---List of tables---</h4>
+    <form method="POST" action="/maker/dbcolumn/" enctype="multipart/form-data">
+      {% csrf_token %}
 
-    <!-- <select class="custom-select" id="account_status_id" name="account_status_name" required> 
-      <option selected>--- Select One ---</option> 
-      <option value="household">HOUSEHOLD</option> 
-    </select> -->
-    
-    <select class="custom-select" id="table_id" name="table_name" onchange="show_table_column(this.value)" required> 
-      <option selected>--- Select One ---</option>
-      {% for table in tables_name %}
-        <option value="{{table}}">{{table}}</option>
-      {% endfor %}
-    </select>
+      <h4>---List of tables---</h4>
+      <select class="custom-select" id="table_id" name="table_name" onchange="show_table_column(this.value)" required> 
+        <option selected>--- Select One ---</option>
+        {% for table in tables_name %}
+          <option value="{{table}}">{{table}}</option>
+        {% endfor %}
+      </select>
 
 
-    <h4>---List of columns---</h4> 
-    <select class="custom-select" id="column_id" name="column_name" required> 
-      <option selected>--- Select One ---</option>
-      
-    </select>
+      <h4>---List of columns---</h4> 
+      <select class="custom-select" id="column_id" name="column_name" required> 
+        <option selected>--- Select One ---</option>
+        
+      </select>
 
-    <form action="/action_page.php">
-      <input type="file" id="myFile" name="filename">
+      <h4>---Upload xlxs file---</h4>
+      <input type="file" id="fileId" name="filename">
       <input type="submit">
     </form>
 

@@ -1,5 +1,13 @@
 import json
 
+import io
+
+import xlrd
+import os
+import tempfile
+
+import pandas as pd
+
 from django.shortcuts import render
 
 from django.db import connection
@@ -42,7 +50,7 @@ class CreatePostView(CreateView): # new
             tables_column_d[table] = columns
 
         # print("Table Info: ", tables_column_d["HOUSEHOLD"])
-        print("Table Info: ", table_info)
+        # print("Table Info: ", table_info)
 
         return render(request, "page.html", {"tables_name": tables_name,
                                             "tables_column_d": tables_column_d}) 
@@ -52,16 +60,53 @@ class CreatePostView(CreateView): # new
 
         data                    = request.POST
         print("########### ", data) 
-
         
+        excel_raw_data_1 = pd.read_excel(request.FILES.get('filename'),'Sheet1')
+        # excel_raw_data_1 = pd.read_excel(request.FILES.get('filename'))
+        print("### Dataframe ####\n", excel_raw_data_1)
 
-        # Insert into model
-        insert_into_HouseHoldModel = HouseHoldModel(
-            issue_maker                 = operating_user,
+        selected_table = request.POST.get('table_name')
+        print("selected table name: ", selected_table)
+
+        tables_name = connection.introspection.table_names() 
+        tables_column_d = {}
+        for model in apps.get_models():
+            if model._meta.proxy:
+                continue
+            table = model._meta.db_table
+            if table not in tables_name:
+                continue
+            columns = [field.column for field in model._meta.fields] 
+            tables_column_d[table] = columns
+
+        table_columns = tables_column_d[selected_table]
+
+        # input_file = request.FILES.get('filename')
+        # wb = xlrd.open_workbook(filename=None, file_contents=input_file.read())
+
+        # files               = request.FILES
+        # xlxs_file       = files["filename"]
+        # print("files: ", type(xlxs_file.read())) # .read()
+
+        # myfilename = files["filename"].filename
+        # with open(myfilename, 'wb') as f:  # Save the file locally
+        #     f.write(form['myfile'].file.read())
+        # df = pd.read_excel(myfilename)
+
+        # toread = io.BytesIO()
+        # toread.write(xlxs_file.read()) 
+        # toread.seek(0) 
+
+        # df = pd.read_excel(toread)
+        # print(df.show())
+
+        # # Insert into model
+        # insert_into_HouseHoldModel = HouseHoldModel(
+        #     issue_maker                 = operating_user,
             
-        )
+        # )
             
-        insert_into_HouseHoldModel.save()
+        # insert_into_HouseHoldModel.save()
 
         return render(request, "page.html")
 
@@ -81,7 +126,7 @@ class TableColumnFoundView(CreateView): # new
         # print("Tables name: ", tables_name)
         # print("***",request)
 
-        table_info = []
+        # table_info = []
         tables_column_d = {}
         for model in apps.get_models():
             if model._meta.proxy:
@@ -92,11 +137,11 @@ class TableColumnFoundView(CreateView): # new
                 continue
 
             columns = [field.column for field in model._meta.fields]
-            table_info.append((table, columns))
+            # table_info.append((table, columns))
             tables_column_d[table] = columns
 
         table_columns = tables_column_d[mytable]
-        print("Table Info: ", table_columns)
+        # print("Table Info: ", table_columns)
         # json_data = {table: str(table_columns)}
         json_data = {"response": table_columns}
 
