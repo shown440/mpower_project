@@ -18,11 +18,17 @@
     
   </head>
   <body class="bg">
+    {%if msg%}
+      <div class="">
+        <h2>{{msg}}</h2>
+      </div>
+    {%endif%}
+
     <h1>Household</h1>
     
     <form method="POST" action="/maker/dbcolumn/" enctype="multipart/form-data">
       {% csrf_token %}
-
+      
       <h4>---List of tables---</h4>
       <select class="custom-select" id="table_id" name="table_name" onchange="show_table_column(this.value)" required> 
         <option selected>--- Select One ---</option>

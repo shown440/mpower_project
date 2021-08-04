@@ -6,11 +6,11 @@
 
 # posts/forms.py
 from django import forms
-from .models import HouseHoldModel
+from .models import HOUSEHOLDModel
 
 class HouseHoldForm(forms.ModelForm):
 
     class Meta:
-        model = HouseHoldModel
+        model = HOUSEHOLDModel
         fields = ['hh_head']
  

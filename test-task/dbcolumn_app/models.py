@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 
-class HouseHoldModel(models.Model):
+class HOUSEHOLDModel(models.Model):
     hh_head            = models.CharField(max_length=100, blank=True, null=True)
     hh_gender          = models.CharField(max_length=100, blank=True, null=True)
     hh_age             = models.IntegerField(blank=True, null=True)
