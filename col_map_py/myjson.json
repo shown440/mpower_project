@@ -1,0 +1,26 @@
+[
+    {
+      "source_column": "hh_head",
+      "destination_column": "hh_head"
+    },
+    {
+      "source_column": "hh_gender",
+      "destination_column": "hh_gender"
+    },
+    {
+      "source_column": "hh_age",
+      "destination_column": "hh_age"
+    },
+    {
+      "source_column": "hh_dob",
+      "destination_column": "hh_dob"
+    },
+    {
+      "source_column": "no_of_members",
+      "destination_column": "no_of_members"
+    },
+    {
+      "source_column": "has_disability",
+      "destination_column": "has_disability"
+    }
+]
